@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health & Safety Incident Logger</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Health & Safety Incident Logger</h1>
+            <p>Record and track workplace incidents</p>
+        </header>
+
+        <main>
+            <section class="form-section">
+                <h2>Log New Incident</h2>
+                <form id="incident-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="incident-date">Date *</label>
+                            <input type="date" id="incident-date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="incident-time">Time *</label>
+                            <input type="time" id="incident-time" name="time" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location *</label>
+                        <input type="text" id="location" name="location" placeholder="e.g., Warehouse B, Office Floor 3" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description of Incident *</label>
+                        <textarea id="description" name="description" rows="4" placeholder="Describe what happened in detail..." required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="injury-type">Injury Type</label>
+                            <select id="injury-type" name="injuryType">
+                                <option value="">Select injury type</option>
+                                <option value="none">No Injury</option>
+                                <option value="cut">Cut / Laceration</option>
+                                <option value="bruise">Bruise / Contusion</option>
+                                <option value="sprain">Sprain / Strain</option>
+                                <option value="fracture">Fracture</option>
+                                <option value="burn">Burn</option>
+                                <option value="chemical">Chemical Exposure</option>
+                                <option value="eye">Eye Injury</option>
+                                <option value="respiratory">Respiratory Issue</option>
+                                <option value="electric">Electric Shock</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="severity">Severity Level *</label>
+                            <select id="severity" name="severity" required>
+                                <option value="">Select severity</option>
+                                <option value="minor">Minor - First aid only</option>
+                                <option value="moderate">Moderate - Medical attention needed</option>
+                                <option value="serious">Serious - Hospital visit required</option>
+                                <option value="critical">Critical - Life threatening</option>
+                                <option value="near-miss">Near Miss - No injury occurred</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="person-involved">Person Involved *</label>
+                        <input type="text" id="person-involved" name="personInvolved" placeholder="Name of person involved in the incident" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="witnesses">Witnesses</label>
+                        <input type="text" id="witnesses" name="witnesses" placeholder="Names of witnesses (comma separated)">
+                    </div>
+
+                    <button type="submit" class="btn-submit">Log Incident</button>
+                </form>
+            </section>
+
+            <section class="list-section">
+                <div class="list-header">
+                    <h2>Incident Log</h2>
+                    <div class="filter-controls">
+                        <select id="severity-filter">
+                            <option value="">All Severities</option>
+                            <option value="minor">Minor</option>
+                            <option value="moderate">Moderate</option>
+                            <option value="serious">Serious</option>
+                            <option value="critical">Critical</option>
+                            <option value="near-miss">Near Miss</option>
+                        </select>
+                        <button id="clear-all" class="btn-clear">Clear All</button>
+                    </div>
+                </div>
+                <div id="incident-list" class="incident-list">
+                    <p class="no-incidents">No incidents logged yet.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Health & Safety Incident Logger</p>
+        </footer>
+    </div>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h3>Incident Details</h3>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
